@@ -12,8 +12,8 @@ public class Carte {
             return this.couleur;
         }
 
-        private String getValeur() {
-            return this.couleur;
+        private int getValeur() {
+            return this.valeur;
         }
 
     }
