@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -6,26 +8,27 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("veuillez entrer la main1, avec la bonne forme : ");
+        System.out.println("Veuillez entrer la main1, avec la bonne forme : ");
         String str = sc.next();
-        System.out.println("vous avez saisi la carte : " + str);
-        Card c1 = new Card(str);
+        List<Card> list1 = new ArrayList<>();
+        list1.add(new Card(str));
+        Hand hand1 = new Hand(list1);
 
         sc.nextLine();
 
-        System.out.println("veuillez entrer la main1, avec la bonne forme : ");
+        System.out.println("Veuillez entrer la main2, avec la bonne forme : ");
         String str2 = sc.next();
-        System.out.println("vous avez saisi la carte : " + str2);
-        Card c2 = new Card(str2);
+        List<Card> list2 = new ArrayList<>();
+        list1.add(new Card(str));
+        Hand hand2 = new Hand(list2);
 
-
-        if(c2.isWeakerThan(c1)){
-            System.out.println("La carte gagnante est : " + c1.getValue() + " de " + c1.getColor());
+        /*if(hand2.isWeakerThan(hand1)){
+            System.out.println("La main 1 gagne avec la carte : " + hand1.hand.get(0).getValue() + " de " + hand1.hand.get(0).getColor());
         } else if (c2.equals(c1)) {
             System.out.println("Egalité !");
         } else {
-            System.out.println("La carte gagnante est : " + c2.getValue() + " de " + c2.getColor());
-        }
+            System.out.println("La carte gagnante est : " + hand2.hand.get(0).getValue() + " de " + hand2.hand.get(0).getColor());
+        }*/
 
     }
 }
