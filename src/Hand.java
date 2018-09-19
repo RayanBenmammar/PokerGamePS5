@@ -16,4 +16,10 @@ public class Hand {
         return this.hand.get(0).equals(hand1.hand.get(0));
     }
 
+    public boolean pair(){
+        if(this.hand.get(0).getValue() == this.hand.get(1).getValue()){
+            return true;
+        }
+        return false;
+    }
 }
