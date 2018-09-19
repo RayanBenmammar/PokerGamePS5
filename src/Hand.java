@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.ArrayList;
 
 public class Hand {
 
@@ -11,6 +10,10 @@ public class Hand {
 
     public boolean isWeakerThan(Hand hand1){
         return this.hand.get(0).isWeakerThan(hand1.hand.get(0));
+    }
+
+    public boolean equals(Hand hand1){
+        return this.hand.get(0).equals(hand1.hand.get(0));
     }
 
 }

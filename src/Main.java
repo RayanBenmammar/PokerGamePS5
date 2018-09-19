@@ -24,9 +24,9 @@ public class Main {
 
         if(hand2.isWeakerThan(hand1)){
             System.out.println("La main 1 gagne avec la carte : " + hand1.hand.get(0).getValue() + " de " + hand1.hand.get(0).getColor());
-        }/* else if (c2.equals(c1)) {
+        } else if (hand2.equals(hand1)) {
             System.out.println("Egalité !");
-        }*/ else {
+        } else {
             System.out.println("La main 2 gagne avec la carte : " + hand2.hand.get(0).getValue() + " de " + hand2.hand.get(0).getColor());
         }
 
