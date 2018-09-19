@@ -13,6 +13,9 @@ public class Hand {
         return this.hand.get(0).isWeakerThan(hand1.hand.get(0));
     }
 
+    public Card getCardFromHand (int index){
+        return hand.get(index);
+    }
 
     public boolean pair(){
         if(this.hand.get(0).getValue() == this.hand.get(1).getValue()){
