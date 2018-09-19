@@ -18,8 +18,12 @@ public class Hand {
     }
 
     public boolean pair(){
-        if(this.hand.get(0).getValue() == this.hand.get(1).getValue()){
-            return true;
+        for(int i = 0 ; i < this.hand.size() ; i++){
+            for(int j = this.hand.size()-1 ; j > i ; j--){
+                if(this.hand.get(i).getValue() == this.hand.get(j).getValue()){
+                    return true;
+                }
+            }
         }
         return false;
     }
