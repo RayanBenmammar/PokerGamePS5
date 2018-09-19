@@ -26,6 +26,8 @@ public class Main {
             list2.add(new Card(str2));
         }
         Hand hand2 = new Hand(list2);
+        System.out.println();
+
 
         if(hand2.isWeakerThan(hand1)){
             System.out.println("La main 1 gagne avec la carte : " + hand1.hand.get(0).getValue() + " de " + hand1.hand.get(0).getColor());
