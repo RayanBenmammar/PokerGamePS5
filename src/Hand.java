@@ -1,11 +1,12 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Hand {
 
     public List<Card> hand;
 
     Hand(List<Card> new_hand){
-        hand = new_hand;
+        this.hand = new_hand;
     }
 
     public boolean isWeakerThan(Hand hand1){

@@ -19,16 +19,16 @@ public class Main {
         System.out.println("Veuillez entrer la main2, avec la bonne forme : ");
         String str2 = sc.next();
         List<Card> list2 = new ArrayList<>();
-        list1.add(new Card(str));
+        list2.add(new Card(str2));
         Hand hand2 = new Hand(list2);
 
-        /*if(hand2.isWeakerThan(hand1)){
+        if(hand2.isWeakerThan(hand1)){
             System.out.println("La main 1 gagne avec la carte : " + hand1.hand.get(0).getValue() + " de " + hand1.hand.get(0).getColor());
-        } else if (c2.equals(c1)) {
+        }/* else if (c2.equals(c1)) {
             System.out.println("Egalité !");
-        } else {
-            System.out.println("La carte gagnante est : " + hand2.hand.get(0).getValue() + " de " + hand2.hand.get(0).getColor());
-        }*/
+        }*/ else {
+            System.out.println("La main 2 gagne avec la carte : " + hand2.hand.get(0).getValue() + " de " + hand2.hand.get(0).getColor());
+        }
 
     }
 }
