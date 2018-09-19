@@ -7,19 +7,24 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        List<Card> list1 = new ArrayList<>();
+        List<Card> list2 = new ArrayList<>();
 
         System.out.println("Veuillez entrer la main1, avec la bonne forme : ");
-        String str = sc.next();
-        List<Card> list1 = new ArrayList<>();
-        list1.add(new Card(str));
+        for(int i = 0; i<2; i++){
+            String str = sc.next();
+            list1.add(new Card(str));
+
+        }
         Hand hand1 = new Hand(list1);
 
         sc.nextLine();
 
         System.out.println("Veuillez entrer la main2, avec la bonne forme : ");
-        String str2 = sc.next();
-        List<Card> list2 = new ArrayList<>();
-        list2.add(new Card(str2));
+        for(int i = 0; i<2; i++) {
+            String str2 = sc.next();
+            list2.add(new Card(str2));
+        }
         Hand hand2 = new Hand(list2);
 
         if(hand2.isWeakerThan(hand1)){
