@@ -27,12 +27,14 @@ public class Main {
         }
         Hand hand2 = new Hand(list2);
 
+        hand1.checkCombinaison();
+        hand2.checkCombinaison();
         if(hand2.isWeakerThan(hand1)){
-            System.out.println("La main 1 gagne avec la carte : " + hand1.hand.get(0).getValue() + " de " + hand1.hand.get(0).getColor());
+            System.out.println("La main 1 gagne avec : " + hand1.getBestCombi() + " de " + hand1.hand.get(0).getValue());
         } else if (hand2.equals(hand1)) {
             System.out.println("Egalité !");
         } else {
-            System.out.println("La main 2 gagne avec la carte : " + hand2.hand.get(0).getValue() + " de " + hand2.hand.get(0).getColor());
+            System.out.println("La main 2 gagne avec : " + hand2.getBestCombi() + " de " + hand2.hand.get(0).getValue());
         }
 
     }
