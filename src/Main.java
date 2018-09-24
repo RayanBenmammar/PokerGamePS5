@@ -32,11 +32,12 @@ public class Main {
         hand1.checkCombinaison();
         hand2.checkCombinaison();
         if(hand2.isWeakerThan(hand1)){
-            System.out.println("La main 1 gagne avec : " + hand1.getBestCombi() + " de " + hand1.hand.get(0).getValue());
-        } else if (hand2.equals(hand1)) {
+            System.out.println("La main 1 gagne avec : " + hand1.getBestCombi() + " de " + hand1.getBestCombi().getCombiCard().getValue());
+        } else if (hand2.hasSameCombination(hand1)) {
+            // Mettre code pour faire la hauteur de la combinaison
             System.out.println("Egalité !");
         } else {
-            System.out.println("La main 2 gagne avec : " + hand2.getBestCombi() + " de " + hand2.hand.get(0).getValue());
+            System.out.println("La main 2 gagne avec : " + hand2.getBestCombi() + " de " + hand2.getBestCombi().getCombiCard().getColor());
         }
 
     }
