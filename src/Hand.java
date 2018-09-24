@@ -6,11 +6,12 @@ public class Hand {
     public List<Card> hand;
     public Combination bestCombination;
 
-    private enum Combination{
+    public enum Combination{
         None(""), Paire("Paire"), DoublePaire("Double Paire"), Brelan("Brelan"), Carre("Carré"), Full("Full"),
         Suite("Suite"), Couleur("Couleur"), QuinteFlush("Quinte Flush");
 
         private String val;
+        private Card combin_card;
 
         Combination(String s){
             this.val = s;
@@ -19,6 +20,9 @@ public class Hand {
         public String getVal(){
             return this.val;
         }
+
+        public Card getCombiCard() { return this.combin_card; }
+        public void setCombiCard(Card card_) { this.combin_card = card_; }
 
         public static Combination fromString(String s){
             for(Combination val_card : Combination.values()){
@@ -43,22 +47,23 @@ public class Hand {
     }
 
     public boolean isWeakerThan(Hand hand1){
-        return this.hand.get(0).isWeakerThan(hand1.hand.get(0));
+        return this.bestCombination.compareTo(hand1.bestCombination) < 0;
     }
 
     public Card getCardFromHand(int index){
         return hand.get(index);
     }
 
-    public boolean equals(Hand hand1){
-        return this.getCardFromHand(0).equals(hand1.getCardFromHand(0));
+    public boolean hasSameCombination(Hand hand1){
+        return this.getBestCombi().equals(hand1.getBestCombi());
     }
 
     public boolean pair(){
         for(int i = 0 ; i < this.hand.size() ; i++){
             for(int j = this.hand.size()-1 ; j > i ; j--){
-                if(this.hand.get(i).getValue() == this.hand.get(j).getValue()){
+                if(this.getCardFromHand(i).getValue() == this.getCardFromHand(j).getValue()){
                     this.bestCombination = Combination.Paire;
+                    this.bestCombination.setCombiCard(this.getCardFromHand(j));
                     return true;
                 }
             }
