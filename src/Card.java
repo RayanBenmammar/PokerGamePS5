@@ -3,9 +3,9 @@ public class Card {
     private CardValue value;
     private CardColor color;
 
-    private enum CardValue{
+     enum CardValue{
         None(""), Deux("2"), Trois("3"), Quatre("4"), Cinq("5"), Six("6"), Sept("7"), Huit("8"), Neuf("9"), Dix("10"),
-        Valet("V"), Dame("D"), Roi("R"), As("A");
+        Valet("V"), Dame("D"), Roi("R"), As("A"), ;
 
         private String val;
 
@@ -28,7 +28,7 @@ public class Card {
 
     }
 
-    private enum CardColor{
+     enum CardColor{
         None(""), Pique("Pi"), Trefle("Tr"), Carreau("Ca"), Coeur("Co");
 
         private String coul;
