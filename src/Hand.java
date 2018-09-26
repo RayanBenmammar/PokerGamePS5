@@ -114,7 +114,6 @@ public class Hand {
         for(int i = 0; i < hand.size(); i++){
             if(hand.get(i).getValue() == index) card = hand.get(i);
         }
-
         return card;
     }
 

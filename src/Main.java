@@ -37,19 +37,21 @@ public class Main {
         if(hand2.isWeakerThan(hand1)){
             System.out.println("La main 1 gagne avec : " + hand1.getBestCombi() + " de " + hand1.getBestCombi().getCombiCard().getValue());
         } else if (hand2.hasSameCombination(hand1)) {
-            hand1.high();
-            hand2.high();
-            if (Integer.parseInt(hand1.getBestCombinationValue().getVal()) > Integer.parseInt(hand2.getBestCombinationValue().getVal())) {
-                System.out.println("La main 1 gagne avec : " + hand1.getBestCombi().getVal() + " de " + hand1.getBestCombinationValue());
-            } else if (Integer.parseInt(hand1.getBestCombinationValue().getVal()) == Integer.parseInt(hand2.getBestCombinationValue().getVal())) {
+            // Mettre code pour faire la hauteur de la combinaison
+            //hand1.high();
+            //hand2.high();
+            if (hand2.getBestCombi().getCombiCard().isWeakerThan(hand1.getBestCombi().getCombiCard())) {
+                System.out.println("La main 1 gagne avec : " + hand1.getBestCombi() + " de " + hand1.getBestCombi().getCombiCard().getValue());
+            } else if (hand1.getBestCombi().getCombiCard().equals(hand2.getBestCombi().getCombiCard())) {
                 System.out.println("Egalité ! ");
             }
             else {
-                System.out.println("La main 2 gagne avec : " + hand2.getBestCombi().getVal() + " de " + hand2.getBestCombinationValue());
+                System.out.println("La main 2 gagne avec : " + hand2.getBestCombi() + " de " + hand2.getBestCombi().getCombiCard().getValue());
             }
 
         } else {
             System.out.println("La main 2 gagne avec : " + hand2.getBestCombi() + " de " + hand2.getBestCombi().getCombiCard().getValue());
         }
+
     }
 }
