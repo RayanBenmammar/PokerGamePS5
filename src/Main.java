@@ -37,7 +37,6 @@ public class Main {
         if(hand2.isWeakerThan(hand1)){
             System.out.println("La main 1 gagne avec : " + hand1.getBestCombi() + " de " + hand1.getBestCombi().getCombiCard().getValue());
         } else if (hand2.hasSameCombination(hand1)) {
-            // Mettre code pour faire la hauteur de la combinaison
             hand1.high();
             hand2.high();
             if (Integer.parseInt(hand1.getBestCombinationValue().getVal()) > Integer.parseInt(hand2.getBestCombinationValue().getVal())) {
@@ -52,8 +51,5 @@ public class Main {
         } else {
             System.out.println("La main 2 gagne avec : " + hand2.getBestCombi() + " de " + hand2.getBestCombi().getCombiCard().getValue());
         }
-
-
-
     }
 }

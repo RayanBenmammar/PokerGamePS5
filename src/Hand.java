@@ -60,9 +60,6 @@ public class Hand {
                 occurenceCount.put(c.getValue(),1);
             }
         }
-        /*for(Map.Entry entry : occurenceCount.entrySet()){
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        }*/
 
     }
 
@@ -71,11 +68,13 @@ public class Hand {
         this.brelan();
         if(!this.pair() && !this.brelan()){
             this.bestCombination = Combination.None;
-            this.bestCombinationValue =  Card.CardValue.None;
+            this.bestCombination.setCombiCard(hand.get(0));
+            //this.bestCombinationValue =  Card.CardValue.None;
+            this.high();
             for( Card c : this.hand){
-                if(Integer.parseInt( (c.getValue().getVal())) > Integer.parseInt(this.bestCombinationValue.getVal())){
-                    this.bestCombinationValue = c.getValue();
-                }
+               if(c.isWeakerThan(this.bestCombination.combin_card)){
+                   this.bestCombinationValue = c.getValue();
+               }
             }
         }
     }
@@ -100,7 +99,8 @@ public class Hand {
     public void high(){
 
         for( Card c : this.hand){
-            if(Integer.parseInt( (c.getValue().getVal())) > Integer.parseInt(this.bestCombinationValue.getVal())){
+            //if(Integer.parseInt( (c.getValue().getVal())) > Integer.parseInt(this.bestCombinationValue.getVal())){
+            if(!c.isWeakerThan(this.bestCombination.combin_card)){
                 this.bestCombinationValue = c.getValue();
             }
         }
