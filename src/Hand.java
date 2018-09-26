@@ -150,4 +150,17 @@ public class Hand {
         return false;
 
     }
+
+    public boolean carre(){
+        for( Map.Entry entry :  this.occurenceCount.entrySet()){
+            if(entry.getValue() == Integer.valueOf(4) ) {
+                this.bestCombination = Combination.Carre;
+                this.bestCombination.setCombiCard(this.getCardFromHand((Card.CardValue) entry.getKey()));
+                this.bestCombinationValue = (Card.CardValue) entry.getKey();
+                return true;}
+
+        }
+        return false;
+    }
+
 }
