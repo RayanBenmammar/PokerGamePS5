@@ -156,5 +156,10 @@ public class Hand {
         return false;
     }
 
+    public boolean full(){
+        if (occurenceCount.containsValue(Integer.valueOf(2)) && occurenceCount.containsValue(Integer.valueOf(3))){
+            this.bestCombination=Combination.Full;
 
+        }
+    }
 }
