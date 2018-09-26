@@ -47,7 +47,7 @@ public class Hand {
     public void setCombiCard(Card card_) { this.bestCombinationCard = card_; }
 
     private void Occurences(){
-        occurenceCount =  new HashMap<Card.CardValue, Integer>();
+        occurenceCount =  new HashMap<>();
         for( Card c : this.hand){
             if(occurenceCount.containsKey(c.getValue())){
                 occurenceCount.put(c.getValue(), occurenceCount.get(c.getValue())+1);
