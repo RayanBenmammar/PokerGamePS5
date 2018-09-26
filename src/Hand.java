@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class Hand {
 
-    public List<Card> hand;
-    public Combination bestCombination;
-    public Card.CardValue bestCombinationValue;
+    private List<Card> hand;
+    private Combination bestCombination;
+    private Card.CardValue bestCombinationValue;
     private HashMap<Card.CardValue, Integer> occurenceCount ;
 
-    protected enum Combination{
+     enum Combination{
         None("Une hauteur",0), Paire("Paire",1), DoublePaire("Double Paire",2), Brelan("Brelan",3), Carre("Carré",4), Full("Full",5),
         Suite("Suite",6), Couleur("Couleur",7), QuinteFlush("Quinte Flush",8);
 
@@ -64,19 +64,11 @@ public class Hand {
     }
 
     public void checkCombinaison(){
-        this.pair();
-        this.brelan();
         if(!this.pair() && !this.brelan()){
             this.bestCombination = Combination.None;
-            this.bestCombination.setCombiCard(hand.get(0));
-            //this.bestCombinationValue =  Card.CardValue.None;
             this.high();
-            for( Card c : this.hand){
-               if(c.isWeakerThan(this.bestCombination.combin_card)){
-                   this.bestCombinationValue = c.getValue();
-               }
-            }
         }
+
     }
 
     public Combination getBestCombi(){
@@ -98,27 +90,32 @@ public class Hand {
 
     public void high(){
 
+        this.bestCombination.setCombiCard(hand.get(0));
         for( Card c : this.hand){
-            //if(Integer.parseInt( (c.getValue().getVal())) > Integer.parseInt(this.bestCombinationValue.getVal())){
             if(!c.isWeakerThan(this.bestCombination.combin_card)){
                 this.bestCombinationValue = c.getValue();
+                this.bestCombination.setCombiCard(c);
             }
         }
-        this.bestCombination = Combination.None;
 
     }
 
 
     public Card getCardFromHand(Card.CardValue index){
+
          Card card = new Card("empty");
-        for(int i = 0; i < hand.size(); i++){
-            if(hand.get(i).getValue() == index) card = hand.get(i);
+        for(int i = 0; i < this.hand.size(); i++){
+            if(this.hand.get(i).getValue() == index) card = this.hand.get(i);
         }
         return card;
     }
 
     public boolean hasSameCombination(Hand hand1){
         return this.getBestCombi().equals(hand1.getBestCombi());
+    }
+
+    public Combination getBestCombination(){
+        return  this.bestCombination;
     }
 
 
@@ -161,5 +158,24 @@ public class Hand {
         }
         return false;
     }
+
+    public boolean doublepPaire(){
+         int cnt = 0;
+         Card.CardValue card1;
+        for( Map.Entry entry :  this.occurenceCount.entrySet()){
+            if(entry.getValue() == Integer.valueOf(2) ) {
+                cnt++;
+                card1 =(Card.CardValue) entry.getKey();
+            }
+
+            if(cnt == 2){
+                this.bestCombination = Combination.DoublePaire;
+
+                return true;}
+
+        }
+        return false;
+    }
+
 
 }
