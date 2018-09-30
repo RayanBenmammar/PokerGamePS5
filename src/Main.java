@@ -14,10 +14,8 @@ public class Main {
         for(int i = 0; i<3; i++){
             String str = sc.next();
             list1.add(new Card(str));
-
         }
         Hand hand1 = new Hand(list1);
-
 
         sc.nextLine();
 

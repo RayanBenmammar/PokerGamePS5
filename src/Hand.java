@@ -98,8 +98,6 @@ public class Hand {
         return this.getBestCombi().equals(hand1.getBestCombi());
     }
 
-
-
    public boolean pair(){
         for( Map.Entry entry :  this.occurenceCount.entrySet()){
             if(entry.getValue() == Integer.valueOf(2) ) {
