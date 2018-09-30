@@ -10,8 +10,8 @@ public class Hand {
     private HashMap<Card.CardValue, Integer> occurenceCount ;
 
     protected enum Combination{
-        None("Une hauteur"), Paire("Paire"), DoublePaire("Double Paire"), Brelan("Brelan"), Carre("Carré"), Full("Full"),
-        Suite("Suite"), Couleur("Couleur"), QuinteFlush("Quinte Flush");
+        None("Une hauteur"), Paire("Paire"), DoublePaire("Double Paire"), Brelan("Brelan"), Suite("Suite"), Couleur("Couleur"),
+        Full("Full"), Carre("Carré"), QuinteFlush("Quinte Flush");
 
         private String val;
 
