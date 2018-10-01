@@ -23,10 +23,10 @@ public class Arbitrator {
     public void askWinner() {
         hands[0].checkCombinaison();
         hands[1].checkCombinaison();
-        if (hands[1].isWeakerThan(hands[0])) {
-            this.printMessage("La main 1 gagne avec : " + hands[0].getBestCombi() + " de " + hands[0].getCombiCard().getValue());
+        if (hands[0].isWeakerThan(hands[1])) {
+            this.printMessage("La main 2 gagne avec : " + hands[1].getBestCombi() + " de " + hands[1].getCombiCard().getValue());
         } else {
-            this.printMessage("La main 2 gagne avec : " + hands[0].getBestCombi() + " de " + hands[0].getCombiCard().getValue());
+            this.printMessage("La main 1 gagne avec : " + hands[0].getBestCombi() + " de " + hands[0].getCombiCard().getValue());
         }
 
         // Mettre le code de la hauteur dans la méthode isWeakerThan, cette méthode doit juste renvoyer vrai ou faux, et on affiche qui gagne en fonction.

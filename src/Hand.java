@@ -82,22 +82,26 @@ public class Hand {
         return this.bestCombination;
     }
 
-    public boolean isWeakerThan(Hand hand1) {
-        if(this.bestCombination.compareTo(hand1.bestCombination) < 0){
+    public boolean isWeakerThan(Hand hand2) {
+        // On vérifie si une main a une combinaison plus forte que l'autre
+        if(this.bestCombination.compareTo(hand2.bestCombination) < 0){
             return true;
-        } else if (this.bestCombination.compareTo(hand1.bestCombination) > 0){
+        } else if (this.bestCombination.compareTo(hand2.bestCombination) > 0){
             return false;
         }
 
-        /*if(this.getCombiCard().isWeakerThan(hand1.getCombiCard())){
-            System.out.println("true");
+        // Les deux mains ont la même combinaison, donc on vérifie la valeur de carte de leur combinaisons
+        if(this.getCombiCard().isWeakerThan(hand2.getCombiCard())){
             return true;
-        } else if(hand1.getCombiCard().isWeakerThan(this.getCombiCard())){
-            System.out.println("false");
+        } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
             return false;
-        }*/
+        }
 
-        return this.getCombiCard().isWeakerThan(hand1.getCombiCard());
+        // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
+        // TODO
+
+
+        return this.getCombiCard().isWeakerThan(hand2.getCombiCard());
     }
 
     public void high(){
@@ -118,8 +122,8 @@ public class Hand {
         return card;
     }
 
-    public boolean hasSameCombination(Hand hand1){
-        return this.getBestCombi().equals(hand1.getBestCombi());
+    public boolean hasSameCombination(Hand hand2){
+        return this.getBestCombi().equals(hand2.getBestCombi());
     }
 
    public boolean pair(){
