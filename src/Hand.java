@@ -83,6 +83,20 @@ public class Hand {
     }
 
     public boolean isWeakerThan(Hand hand1) {
+        if(this.bestCombination.compareTo(hand1.bestCombination) < 0){
+            return true;
+        } else if (this.bestCombination.compareTo(hand1.bestCombination) > 0){
+            return false;
+        }
+
+        /*if(this.getCombiCard().isWeakerThan(hand1.getCombiCard())){
+            System.out.println("true");
+            return true;
+        } else if(hand1.getCombiCard().isWeakerThan(this.getCombiCard())){
+            System.out.println("false");
+            return false;
+        }*/
+
         return this.getCombiCard().isWeakerThan(hand1.getCombiCard());
     }
 
@@ -95,7 +109,6 @@ public class Hand {
         }
 
     }
-
 
     public Card getCardFromHand(Card.CardValue index){
         Card card = new Card("empty");
