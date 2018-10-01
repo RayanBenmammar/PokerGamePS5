@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Hand {
@@ -10,8 +11,8 @@ public class Hand {
     private HashMap<Card.CardValue, Integer> occurenceCount ;
 
     protected enum Combination{
-        None("Une hauteur"), Paire("Paire"), DoublePaire("Double Paire"), Brelan("Brelan"), Carre("Carré"), Full("Full"),
-        Suite("Suite"), Couleur("Couleur"), QuinteFlush("Quinte Flush");
+        None("Une hauteur"), Paire("Paire"), DoublePaire("Double Paire"), Brelan("Brelan"), Suite("Suite"), Couleur("Couleur"),
+        Full("Full"), Carre("Carré"), QuinteFlush("Quinte Flush");
 
         private String val;
 
@@ -34,9 +35,19 @@ public class Hand {
         }
     }
 
+    Hand(){
+        this.bestCombination = Combination.None;
+        this.bestCombinationCard = new Card();
+        List<Card> list = new ArrayList<>();
+        for(int i = 0; i<5; i++){
+            list.add(new Card());
+        }
+        this.hand = list;
+    }
+
     Hand(List<Card> new_hand){
         this.bestCombination = Combination.None;
-        this.bestCombinationCard = new Card("   ");
+        this.bestCombinationCard = new Card();
         this.hand = new_hand;
         this.Occurences();
 
@@ -71,8 +82,26 @@ public class Hand {
         return this.bestCombination;
     }
 
-    public boolean isWeakerThan(Hand hand1) {
-        return this.getCombiCard().isWeakerThan(hand1.getCombiCard());
+    public boolean isWeakerThan(Hand hand2) {
+        // On vérifie si une main a une combinaison plus forte que l'autre
+        if(this.bestCombination.compareTo(hand2.bestCombination) < 0){
+            return true;
+        } else if (this.bestCombination.compareTo(hand2.bestCombination) > 0){
+            return false;
+        }
+
+        // Les deux mains ont la même combinaison, donc on vérifie la valeur de carte de leur combinaisons
+        if(this.getCombiCard().isWeakerThan(hand2.getCombiCard())){
+            return true;
+        } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
+            return false;
+        }
+
+        // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
+        // TODO
+
+
+        return this.getCombiCard().isWeakerThan(hand2.getCombiCard());
     }
 
     public void high(){
@@ -85,7 +114,6 @@ public class Hand {
 
     }
 
-
     public Card getCardFromHand(Card.CardValue index){
         Card card = new Card("empty");
         for(int i = 0; i < hand.size(); i++){
@@ -94,11 +122,9 @@ public class Hand {
         return card;
     }
 
-    public boolean hasSameCombination(Hand hand1){
-        return this.getBestCombi().equals(hand1.getBestCombi());
+    public boolean hasSameCombination(Hand hand2){
+        return this.getBestCombi().equals(hand2.getBestCombi());
     }
-
-
 
    public boolean pair(){
         for( Map.Entry entry :  this.occurenceCount.entrySet()){
