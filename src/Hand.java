@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Hand {
@@ -34,9 +35,19 @@ public class Hand {
         }
     }
 
+    Hand(){
+        this.bestCombination = Combination.None;
+        this.bestCombinationCard = new Card();
+        List<Card> list = new ArrayList<>();
+        for(int i = 0; i<5; i++){
+            list.add(new Card());
+        }
+        this.hand = list;
+    }
+
     Hand(List<Card> new_hand){
         this.bestCombination = Combination.None;
-        this.bestCombinationCard = new Card("   ");
+        this.bestCombinationCard = new Card();
         this.hand = new_hand;
         this.Occurences();
 

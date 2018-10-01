@@ -47,6 +47,11 @@ public class Card {
         }
     }
 
+    Card(){
+         this.value = CardValue.None;
+         this.color = CardColor.None;
+    }
+
     Card(String card){
         this.value = CardValue.fromString(card.substring(0,card.length() - 2));
         this.color = CardColor.fromString(card.substring(card.length() - 2));
