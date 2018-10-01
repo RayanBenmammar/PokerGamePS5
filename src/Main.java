@@ -1,30 +1,14 @@
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        List<Card> list1 = new ArrayList<>();
-        List<Card> list2 = new ArrayList<>();
+        CardReader reader = new CardReader();
 
         System.out.println("Veuillez entrer la main1, avec la bonne forme : ");
-        for(int i = 0; i<3; i++){
-            String str = sc.next();
-            list1.add(new Card(str));
-        }
-        Hand hand1 = new Hand(list1);
-
-        sc.nextLine();
+        Hand hand1 = new Hand(reader.readCardFromInput(3));
 
         System.out.println("Veuillez entrer la main2, avec la bonne forme : ");
-        for(int i = 0; i<3; i++) {
-            String str2 = sc.next();
-            list2.add(new Card(str2));
-        }
-        Hand hand2 = new Hand(list2);
+        Hand hand2 = new Hand(reader.readCardFromInput(3));
 
 
 
