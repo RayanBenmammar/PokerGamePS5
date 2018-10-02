@@ -68,10 +68,12 @@ public class Hand {
             }
         }
 
+
+
     }
 
     public void checkCombinaison(){
-        if(!this.pair() && !this.brelan()){
+        if(!this.pair() && !this.doublepPaire() && !this.brelan() && !this.carre()  ){
             this.bestCombination = Combination.None;
             this.high();
         }
