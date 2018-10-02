@@ -4,18 +4,22 @@ public class Card {
     private CardColor color;
 
      enum CardValue{
-        None(""), Deux("2"), Trois("3"), Quatre("4"), Cinq("5"), Six("6"), Sept("7"), Huit("8"), Neuf("9"), Dix("10"),
-        Valet("V"), Dame("D"), Roi("R"), As("A"), ;
+        None("",0), Deux("2",2), Trois("3",3), Quatre("4",4), Cinq("5",5), Six("6",6), Sept("7",7), Huit("8",8), Neuf("9",9), Dix("10",10),
+        Valet("V",11), Dame("D",12), Roi("R",13), As("A",14), ;
 
         private String val;
+        private int value;
 
-        CardValue(String s){
+        CardValue(String s, int value){
             this.val = s;
+            this.value = value;
         }
 
         public String getVal(){
             return this.val;
         }
+
+        public int getIntVal(){ return this.value;}
 
         public static CardValue fromString(String s){
             for(CardValue val_card : CardValue.values()){
