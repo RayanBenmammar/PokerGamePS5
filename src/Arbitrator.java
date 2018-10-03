@@ -21,6 +21,10 @@ public class Arbitrator {
     }
 
     public void askWinner() {
+        if(!hands[0].areCardsValid() || !hands[1].areCardsValid()){
+            this.printMessage("ERROR : Veuillez rentrer correctement les mains.");
+            return;
+        }
         hands[0].checkCombinaison();
         hands[1].checkCombinaison();
         if (hands[0].isWeakerThan(hands[1])) {

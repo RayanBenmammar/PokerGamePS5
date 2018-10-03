@@ -76,6 +76,15 @@ public class Hand {
 
     }
 
+    public boolean areCardsValid(){
+        for (Card aCard : this.hand) {
+            if(aCard.getValue() == Card.CardValue.None){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void checkCombinaison(){
         if(!this.pair() && !this.doublepPaire() && !this.brelan() && !this.carre()  ){
             this.bestCombination = Combination.None;
