@@ -68,10 +68,12 @@ public class Hand {
             }
         }
 
+
+
     }
 
     public void checkCombinaison(){
-        if(!this.pair() && !this.brelan()){
+        if(!this.pair() && !this.doublepPaire() && !this.brelan() && !this.carre()  ){
             this.bestCombination = Combination.None;
             this.high();
         }
@@ -183,9 +185,52 @@ public class Hand {
     }
 
     public boolean full(){
-        if (occurenceCount.containsValue(Integer.valueOf(2)) && occurenceCount.containsValue(Integer.valueOf(3))){
-            this.bestCombination=Combination.Full;
+            if( occurenceCount.containsValue(Integer.valueOf(3)) && occurenceCount.containsValue(Integer.valueOf(2)) ) {
+                this.bestCombination = Combination.Full;
+                for( Map.Entry entry :  this.occurenceCount.entrySet()){
+                    if(entry.getValue() == Integer.valueOf(3) ) {
+                        this.setCombiCard(this.getCardFromHand((Card.CardValue) entry.getKey()));
+                        return true;
+                    }
+                }
 
-        }
+            }
+        return false;
+
     }
+
+    public boolean suite(){
+        Card.CardValue min= this.hand.get(0).getValue();
+        Card.CardValue max= this.hand.get(0).getValue();
+
+        for(int i=0; i< this.hand.size(); i++){
+            if(this.hand.get(i).getValue().compareTo(min) <0 ) min = this.hand.get(i).getValue();
+            if(this.hand.get(i).getValue().compareTo(max) >0 ) max= this.hand.get(i).getValue();
+        }
+
+        if(!this.pair() && !this.brelan() && !this.carre() && (min.getIntVal()+4 == max.getIntVal())) return true;
+
+        return false;
+
+    }
+
+    public boolean couleur(){
+
+        Card.CardColor ref = this.hand.get(0).getColor();
+
+        for( int i= 0; i< this.hand.size(); i++){
+
+            if(this.hand.get(i).getColor() != ref) return false ;
+        }
+
+        return true ;
+    }
+
+    public boolean quinteFlush(){
+        if( this.couleur() && this.full()) return true;
+
+        return false;
+    }
+
+
 }
