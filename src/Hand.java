@@ -25,6 +25,10 @@ public class Hand {
             return this.val;
         }
 
+        public boolean isWeakerThan(Combination combin){
+            return this.compareTo(combin) < 0;
+        }
+
         public static Combination fromString(String s){
             for(Combination val_card : Combination.values()){
                 if(s.equals(val_card.getVal())){
@@ -86,9 +90,9 @@ public class Hand {
 
     public boolean isWeakerThan(Hand hand2) {
         // On vérifie si une main a une combinaison plus forte que l'autre
-        if(this.bestCombination.compareTo(hand2.bestCombination) < 0){
+        if(this.bestCombination.isWeakerThan(hand2.bestCombination)){
             return true;
-        } else if (this.bestCombination.compareTo(hand2.bestCombination) > 0){
+        } else if (hand2.bestCombination.isWeakerThan(this.bestCombination)){
             return false;
         }
 
@@ -101,7 +105,6 @@ public class Hand {
 
         // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
         // TODO
-
 
         return this.getCombiCard().isWeakerThan(hand2.getCombiCard());
     }
