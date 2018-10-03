@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,28 +21,14 @@ class HandTest {
     Hand hand2;
     Hand hand3;
     Hand hand4;
+
     @BeforeEach
     public void setup(){
-        list1 = new ArrayList<>();
-        list1.add(new Card("8Tr"));
-        list1.add(new Card("8Pi"));
-        list1.add(new Card("8Ca"));
-        list1.add(new Card("8Co"));
-        list2 = new ArrayList<>();
-        list2.add(new Card("4Tr"));
-        list2.add(new Card("4Pi"));
-        list2.add(new Card("4Ca"));
-        list2.add(new Card("7Co"));
-        list3 = new ArrayList<>();
-        list3.add(new Card("5Tr"));
-        list3.add(new Card("9Pi"));
-        list3.add(new Card("2Ca"));
-        list3.add(new Card("5Co"));
-        list4 = new ArrayList<>();
-        list4.add(new Card("RTr"));
-        list4.add(new Card("DPi"));
-        list4.add(new Card("DCa"));
-        list4.add(new Card("RCo"));
+        list1 = new ArrayList<>(Arrays.asList(new Card("8Tr"),new Card("8Pi"),new Card("8Ca"),new Card("8Co")));
+        list2 = new ArrayList<>(Arrays.asList(new Card("4Tr"),new Card("4Pi"),new Card("4Ca"),new Card("7Co")));
+        list3 = new ArrayList<>(Arrays.asList(new Card("5Tr"),new Card("9Pi"),new Card("2Ca"),new Card("5Co")));
+        list4 = new ArrayList<>(Arrays.asList(new Card("RTr"),new Card("DPi"),new Card("DCa"),new Card("RCo")));
+
 
         hand1 = new Hand(list1);
         hand2 = new Hand(list2);
