@@ -14,7 +14,7 @@ public class Arbitrator {
     }
 
     public void askHand(int index){
-        this.printMessage("Veuillez entrer la main1, avec la bonne forme : ");
+        this.printMessage("Veuillez entrer la main " + (index+1) +", avec la bonne forme : ");
         if(index < 2 && index >= 0) {
             hands[index] = new Hand(reader.readCardFromInput(cardNumber));
         }

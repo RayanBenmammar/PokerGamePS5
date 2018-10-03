@@ -16,7 +16,6 @@ public class Hand {
 
         private String val;
 
-
         Combination(String s){
             this.val = s;
         }
@@ -71,9 +70,6 @@ public class Hand {
                 occurenceCount.put(c.getValue(),1);
             }
         }
-
-
-
     }
 
     public boolean areCardsValid(){
@@ -86,11 +82,13 @@ public class Hand {
     }
 
     public void checkCombinaison(){
-        if(!this.pair() && !this.doublepPaire() && !this.brelan() && !this.carre()  ){
-            this.bestCombination = Combination.None;
+        this.pair();
+        this.doublepPaire();
+        this.brelan();
+        this.carre();
+        if(this.bestCombination.equals(Combination.None)){
             this.high();
         }
-
     }
 
     public Combination getBestCombi(){
@@ -114,6 +112,7 @@ public class Hand {
 
         // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
         // TODO
+
 
         return this.getCombiCard().isWeakerThan(hand2.getCombiCard());
     }
@@ -230,9 +229,8 @@ public class Hand {
 
         Card.CardColor ref = this.hand.get(0).getColor();
 
-        for( int i= 0; i< this.hand.size(); i++){
-
-            if(this.hand.get(i).getColor() != ref) return false ;
+        for (Card aCard : this.hand) {
+            if (aCard.getColor() != ref) return false;
         }
 
         return true ;
