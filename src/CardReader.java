@@ -7,8 +7,6 @@ public class CardReader {
 
     }
 
-
-
     public List<Card> readCardFromInput(int cardNumber){
         Scanner sc = new Scanner(System.in);
         List<Card> list = new ArrayList<>();
