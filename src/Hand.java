@@ -111,7 +111,7 @@ public class Hand {
         }
 
         // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
-        // TODO
+
 
 
         return this.getCombiCard().isWeakerThan(hand2.getCombiCard());
@@ -128,7 +128,7 @@ public class Hand {
     }
 
     public Card getCardFromHand(Card.CardValue index){
-        Card card = new Card("empty");
+        Card card = new Card();
         for(int i = 0; i < hand.size(); i++){
             if(hand.get(i).getValue() == index) card = hand.get(i);
         }
