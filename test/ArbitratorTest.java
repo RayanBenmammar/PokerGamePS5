@@ -47,7 +47,7 @@ class ArbitratorTest {
     }
 
     @Test
-    public void testWin(){
+    public void testWin() throws PokerException{
         assertFalse(hand1.isWeakerThan(hand2));
         assertFalse(hand3.isWeakerThan(hand4));
         assertFalse(hand3.isWeakerThan(hand4));

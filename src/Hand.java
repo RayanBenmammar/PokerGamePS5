@@ -81,36 +81,54 @@ public class Hand {
         return true;
     }
 
-    public void checkCombinaison(){
-        this.pair();
-        this.doublepPaire();
-        this.brelan();
-        this.carre();
-        if(this.bestCombination.equals(Combination.None)){
-            this.high();
+    public void checkCombinaison() throws PokerException{
+        try{
+            this.pair();
+            this.doublepPaire();
+            this.brelan();
+            this.carre();
+            if(this.bestCombination.equals(Combination.None)){
+                this.high();
+            }
+        } catch(Exception e){
+            throw new PokerException("Erreur lors de la vérification des combinaisons.");
         }
+
     }
 
     public Combination getBestCombi(){
         return this.bestCombination;
     }
 
-    public boolean isWeakerThan(Hand hand2) {
-        // On vérifie si une main a une combinaison plus forte que l'autre
-        if(this.bestCombination.isWeakerThan(hand2.bestCombination)){
-            return true;
-        } else if (hand2.bestCombination.isWeakerThan(this.bestCombination)){
-            return false;
+    public boolean isWeakerThan(Hand hand2) throws PokerException{
+        try {
+            // On vérifie si une main a une combinaison plus forte que l'autre
+            if(this.bestCombination.isWeakerThan(hand2.bestCombination)){
+                return true;
+            } else if (hand2.bestCombination.isWeakerThan(this.bestCombination)){
+                return false;
+            }
+        } catch(Exception e){
+            throw new PokerException("Erreur lors de la comparaison des niveaux de combinaisons");
         }
 
-        // Les deux mains ont la même combinaison, donc on vérifie la valeur de carte de leur combinaisons
-        if(this.getCombiCard().isWeakerThan(hand2.getCombiCard())){
-            return true;
-        } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
-            return false;
+        try{
+            // Les deux mains ont la même combinaison, donc on vérifie la valeur de carte de leur combinaisons
+            if(this.getCombiCard().isWeakerThan(hand2.getCombiCard())){
+                return true;
+            } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
+                return false;
+            }
+        } catch(Exception e){
+            throw new PokerException("Erreur lors du calcul de hauteur entre les combinaisons.");
         }
 
-        // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
+        try{
+            // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
+        } catch(Exception e){
+            throw new PokerException("Erreur lors du calcul de hauteur entre les cartes qui ne sont pas dans une combinaison.");
+        }
+
 
 
 
