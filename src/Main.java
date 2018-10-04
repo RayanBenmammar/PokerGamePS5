@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        int CARD_NUMBER = 4;
+        int CARD_NUMBER = 5;
         Arbitrator arbitre = new Arbitrator(CARD_NUMBER);
         try{
             arbitre.askHand(0);

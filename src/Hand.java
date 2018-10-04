@@ -74,7 +74,7 @@ public class Hand {
 
     public boolean areCardsValid(){
         for (Card aCard : this.hand) {
-            if(aCard.getValue() == Card.CardValue.None){
+            if(aCard.getValue() == Card.CardValue.None || aCard.getColor() == Card.CardColor.None){
                 return false;
             }
         }
@@ -86,14 +86,17 @@ public class Hand {
             this.pair();
             this.doublepPaire();
             this.brelan();
+            this.suite();
+            this.couleur();
+            this.full();
             this.carre();
+            this.quinteFlush();
             if(this.bestCombination.equals(Combination.None)){
                 this.high();
             }
         } catch(Exception e){
             throw new PokerException("Erreur lors de la vérification des combinaisons.");
         }
-
     }
 
     public Combination getBestCombi(){
@@ -197,16 +200,19 @@ public class Hand {
 
     public boolean doublepPaire(){
          int cnt = 0;
-         Card.CardValue card1;
+         Card.CardValue card1 = Card.CardValue.None;
         for( Map.Entry entry :  this.occurenceCount.entrySet()){
             if(entry.getValue() == Integer.valueOf(2) ) {
                 cnt++;
-                card1 =(Card.CardValue) entry.getKey();
+                if(((Card.CardValue)entry.getKey()).compareTo(card1) >0 ){
+                    card1 = (Card.CardValue) entry.getKey();
+                }
+
             }
 
             if(cnt == 2){
                 this.bestCombination = Combination.DoublePaire;
-
+                this.setCombiCard(this.getCardFromHand(card1));
                 return true;}
 
         }
@@ -214,7 +220,7 @@ public class Hand {
     }
 
     public boolean full(){
-            if( occurenceCount.containsValue(3) && occurenceCount.containsValue(2) ) {
+            if( occurenceCount.containsValue(Integer.valueOf(3)) && occurenceCount.containsValue(Integer.valueOf(2)) ) {
                 this.bestCombination = Combination.Full;
                 for( Map.Entry entry :  this.occurenceCount.entrySet()){
                     if(entry.getValue() == Integer.valueOf(3) ) {
@@ -237,24 +243,39 @@ public class Hand {
             if (aCard.getValue().compareTo(max) > 0) max = aCard.getValue();
         }
 
-        return !this.pair() && !this.brelan() && !this.carre() && (min.getIntVal() + 4 == max.getIntVal());
+        int sum = min.getIntVal()+4;
+
+        if(!this.pair() && !this.brelan() && !this.carre() && ( sum == max.getIntVal())) {
+            this.bestCombination = Combination.Suite;
+            this.setCombiCard(this.getCardFromHand(max));
+            return true;}
+
+        return false;
 
     }
 
     public boolean couleur(){
 
         Card.CardColor ref = this.hand.get(0).getColor();
+        Card.CardValue max= this.hand.get(0).getValue();
 
         for (Card aCard : this.hand) {
+            if(aCard.getValue().compareTo(max) >0 ) max= aCard.getValue();
             if (aCard.getColor() != ref) return false;
         }
 
+        this.bestCombination = Combination.Couleur;
+        this.setCombiCard(this.getCardFromHand(max));
         return true ;
     }
 
     public boolean quinteFlush(){
-        return this.couleur() && this.full();
+        if( this.couleur() && this.suite()) {
+            this.bestCombination = Combination.QuinteFlush;
+            return true;
+        }
 
+        return false;
     }
 
 }

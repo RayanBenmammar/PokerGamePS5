@@ -3,8 +3,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class HandReader {
-    HandReader(){
 
+    List<Card> usedCards;
+    boolean valid;
+    HandReader(){
+        this.usedCards = new ArrayList<>();
+        this.valid = true;
     }
 
     public void printMessage(String message){
@@ -18,9 +22,20 @@ public class HandReader {
 
         for(int i = 0; i<cardNumber; i++){
             String str = sc.next();
+            Card card = new Card(str);
+            for(int j =0; j< this.usedCards.size();j++){
+                if( card.getColor() == this.usedCards.get(j).getColor() && card.getValue() == this.usedCards.get(j).getValue()){
+                    this.valid = false;
+                }
+            }
+            this.usedCards.add(new Card(str));
             list.add(new Card(str));
         }
         return new Hand(list);
+    }
+
+    public boolean isValid(){
+        return this.valid;
     }
 
     public int checkWinner(Hand hand1, Hand hand2) throws PokerException{
