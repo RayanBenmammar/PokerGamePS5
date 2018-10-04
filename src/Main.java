@@ -1,7 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        Arbitrator arbitre = new Arbitrator(4);
+        int CARD_NUMBER = 4;
+        Arbitrator arbitre = new Arbitrator(CARD_NUMBER);
         try{
             arbitre.askHand(0);
             arbitre.askHand(1);
@@ -13,6 +14,5 @@ public class Main {
             System.out.println("Erreur : ");
             e.printStackTrace();
         }
-
     }
 }

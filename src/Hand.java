@@ -147,8 +147,8 @@ public class Hand {
 
     public Card getCardFromHand(Card.CardValue index){
         Card card = new Card();
-        for(int i = 0; i < hand.size(); i++){
-            if(hand.get(i).getValue() == index) card = hand.get(i);
+        for (Card aCard : hand) {
+            if (aCard.getValue() == index) card = aCard;
         }
         return card;
     }
@@ -214,7 +214,7 @@ public class Hand {
     }
 
     public boolean full(){
-            if( occurenceCount.containsValue(Integer.valueOf(3)) && occurenceCount.containsValue(Integer.valueOf(2)) ) {
+            if( occurenceCount.containsValue(3) && occurenceCount.containsValue(2) ) {
                 this.bestCombination = Combination.Full;
                 for( Map.Entry entry :  this.occurenceCount.entrySet()){
                     if(entry.getValue() == Integer.valueOf(3) ) {
@@ -232,14 +232,12 @@ public class Hand {
         Card.CardValue min= this.hand.get(0).getValue();
         Card.CardValue max= this.hand.get(0).getValue();
 
-        for(int i=0; i< this.hand.size(); i++){
-            if(this.hand.get(i).getValue().compareTo(min) <0 ) min = this.hand.get(i).getValue();
-            if(this.hand.get(i).getValue().compareTo(max) >0 ) max= this.hand.get(i).getValue();
+        for (Card aCard : this.hand) {
+            if (aCard.getValue().compareTo(min) < 0) min = aCard.getValue();
+            if (aCard.getValue().compareTo(max) > 0) max = aCard.getValue();
         }
 
-        if(!this.pair() && !this.brelan() && !this.carre() && (min.getIntVal()+4 == max.getIntVal())) return true;
-
-        return false;
+        return !this.pair() && !this.brelan() && !this.carre() && (min.getIntVal() + 4 == max.getIntVal());
 
     }
 
@@ -255,9 +253,8 @@ public class Hand {
     }
 
     public boolean quinteFlush(){
-        if( this.couleur() && this.full()) return true;
+        return this.couleur() && this.full();
 
-        return false;
     }
 
 }
