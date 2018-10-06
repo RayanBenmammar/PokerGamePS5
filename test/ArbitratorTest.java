@@ -21,6 +21,7 @@ class ArbitratorTest {
     List<Card> list6;
     List<Card> list7;
     List<Card> list8;
+    List<Card> list9;
     Hand hand1;
     Hand hand2;
     Hand hand3;
@@ -29,6 +30,7 @@ class ArbitratorTest {
     Hand hand6;
     Hand hand7;
     Hand hand8;
+    Hand hand9;
 
     @BeforeEach
     public void setup(){
@@ -40,6 +42,7 @@ class ArbitratorTest {
         list6= new ArrayList<>(Arrays.asList(new Card("6Pi"),new Card("5Pi"),new Card("9Pi"),new Card("2Pi"),new Card("RPi")));
         list7= new ArrayList<>(Arrays.asList(new Card("APi"),new Card("ATr"),new Card("ACo"),new Card("2Pi"), new Card("2Tr")));
         list8= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Pi"),new Card("7Pi"),new Card("6Pi"),new Card("5Pi")));
+        list9= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Pi"),new Card("7Pi"),new Card("6Pi"),new Card("5Pi")));
 
 
         hand1 = new Hand(list1);
@@ -50,6 +53,7 @@ class ArbitratorTest {
         hand6 = new Hand(list6);
         hand7 = new Hand(list7);
         hand8 = new Hand(list8);
+        hand9= new Hand(list9);
 
     }
 
@@ -62,10 +66,8 @@ class ArbitratorTest {
         assertFalse(hand3.isWeakerThan(hand1));
         assertFalse(hand6.isWeakerThan(hand2));
         assertFalse(hand5.isWeakerThan(hand3));
-
-
+        assertFalse(hand6.isWeakerThan(hand5));
 
 
     }
-
 }

@@ -20,6 +20,10 @@ class HandTest {
     List<Card> list6;
     List<Card> list7;
     List<Card> list8;
+    List<Card> list9;
+    List<Card> list10;
+    List<Card> list11;
+    List<Card> list12;
     Hand hand1;
     Hand hand2;
     Hand hand3;
@@ -28,6 +32,10 @@ class HandTest {
     Hand hand6;
     Hand hand7;
     Hand hand8;
+    Hand hand9;
+    Hand hand10;
+    Hand hand11;
+    Hand hand12;
 
     @BeforeEach
     public void setup(){
@@ -39,6 +47,10 @@ class HandTest {
         list6= new ArrayList<>(Arrays.asList(new Card("6Pi"),new Card("5Tr"),new Card("4Ca"),new Card("3Tr"),new Card("2Co")));
         list7= new ArrayList<>(Arrays.asList(new Card("APi"),new Card("3Pi"),new Card("7Pi"),new Card("RPi"), new Card("DPi")));
         list8= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Pi"),new Card("7Pi"),new Card("6Pi"),new Card("5Pi")));
+        list9= new ArrayList<>(Arrays.asList(new Card("19Pi"),new Card("8Pi"),new Card("7Pi"),new Card("6Pi"),new Card("5Pi")));
+        list10= new ArrayList<>(Arrays.asList(new Card("6Pi"),new Card("6Pi"),new Card("10Tr"),new Card("RCa"),new Card("2Co")));
+        list11= new ArrayList<>(Arrays.asList(new Card("2Tr"),new Card("7Tr"),new Card("ATr"),new Card("5Tr"),new Card("VTr")));
+        list12= new ArrayList<>(Arrays.asList(new Card("3Pi"),new Card("3Co"),new Card("3Ca"),new Card("APi"),new Card("ATr")));
 
 
         hand1 = new Hand(list1);
@@ -49,6 +61,12 @@ class HandTest {
         hand6 = new Hand(list6);
         hand7 = new Hand(list7);
         hand8 = new Hand(list8);
+        hand9= new Hand(list9);
+        hand10= new Hand(list10);
+        hand11 = new Hand(list11);
+        hand12= new Hand(list12);
+
+
 
     }
 
@@ -106,4 +124,22 @@ class HandTest {
 
     }
 
+    @Test
+    public void testHandValid(){
+        assertTrue(hand1.areCardsValid());
+        assertTrue(hand2.areCardsValid());
+        assertTrue(hand8.areCardsValid());
+        assertFalse(hand9.areCardsValid());
+    }
+
+
+    @Test
+    public void testSameCombi(){
+        assertTrue(hand1.hasSameCombination(hand10));
+        assertTrue(hand11.hasSameCombination(hand8));
+        assertTrue(hand12.hasSameCombination(hand5));
+        assertTrue(hand4.hasSameCombination(hand11));
+        assertTrue(hand1.hasSameCombination(hand5));
+
+    }
 }
