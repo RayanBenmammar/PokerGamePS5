@@ -84,7 +84,7 @@ public class Hand {
     public void checkCombinaison() throws PokerException{
         try{
             this.pair();
-            this.doublepPaire();
+            this.doublePaire();
             this.brelan();
             this.suite();
             this.couleur();
@@ -198,7 +198,7 @@ public class Hand {
         return false;
     }
 
-    public boolean doublepPaire(){
+    public boolean doublePaire(){
          int cnt = 0;
          Card.CardValue card1 = Card.CardValue.None;
         for( Map.Entry entry :  this.occurenceCount.entrySet()){
