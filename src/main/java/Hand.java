@@ -86,12 +86,15 @@ public class Hand {
             this.pair();
             this.doublePaire();
             this.brelan();
-            this.quinteFlush();
+            this.suite();
+            this.couleur();
             this.full();
             this.carre();
+            this.quinteFlush();
             if(this.bestCombination.equals(Combination.None)){
                 this.high();
             }
+            System.out.println("combi: " +this.bestCombination.getVal());
         } catch(Exception e){
             throw new PokerException("Erreur lors de la vérification des combinaisons.");
         }

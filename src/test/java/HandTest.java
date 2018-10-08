@@ -137,6 +137,7 @@ class HandTest {
 
     @Test
     public void testSameCombi(){
+
         assertTrue(hand1.hasSameCombination(hand10));
         assertTrue(hand11.hasSameCombination(hand8));
         assertTrue(hand12.hasSameCombination(hand5));

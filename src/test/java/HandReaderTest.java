@@ -60,7 +60,7 @@ class HandReaderTest {
         assertEquals(1, reader.checkWinner(hand3, hand4));
         assertEquals(1, reader.checkWinner(hand1, hand3));
         assertEquals(1, reader.checkWinner(hand2, hand6));
-        assertEquals(1, reader.checkWinner(hand3, hand5));
+        assertEquals(1, reader.checkWinner(hand5, hand3));
         assertEquals(1, reader.checkWinner(hand5, hand6));
     }
 
