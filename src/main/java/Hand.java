@@ -283,7 +283,14 @@ public class Hand {
         if(!this.occurenceCount.containsValue(2) && !this.occurenceCount.containsValue(3) && !this.occurenceCount.containsValue(4)&&( sum == max.getIntVal())) {
             this.bestCombination = Combination.Suite;
             this.setCombiCard(this.getCardFromHand(max));
-            return true;}
+            return true;
+        }
+
+            if(this.occurenceCount.containsKey(Card.CardValue.As) && this.occurenceCount.containsKey(Card.CardValue.Deux) && this.occurenceCount.containsKey(Card.CardValue.Trois) && this.occurenceCount.containsKey(Card.CardValue.Quatre) && this.occurenceCount.containsKey(Card.CardValue.Cinq)){
+                this.bestCombination = Combination.Suite;
+                this.setCombiCard(new Card("5Pi"));
+                return true;
+            }
 
         return false;
 

@@ -41,9 +41,10 @@ public class HandReader {
     public int checkWinner(Hand hand1, Hand hand2) throws PokerException{
         hand1.checkCombinaison();
         hand2.checkCombinaison();
-        if (hand1.compareTo(hand2) == -1) {
+        int result = hand1.compareTo(hand2);
+        if (result > 0) {
             return 1;
-        } else if(hand2.compareTo(hand1) == -1) {
+        } else if(result < 0) {
             return 0;
         } else {
             return -1;
