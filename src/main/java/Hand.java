@@ -83,17 +83,24 @@ public class Hand {
 
     public void checkCombinaison() throws PokerException{
         try{
-            this.pair();
+            /*this.pair();
             this.doublePaire();
             this.brelan();
             this.suite();
             this.couleur();
             this.full();
             this.carre();
+            this.quinteFlush();*/
+            this.pair();
+            this.doublePaire();
+            this.brelan();
             this.quinteFlush();
+            this.full();
+            this.carre();
             if(this.bestCombination.equals(Combination.None)){
                 this.high();
             }
+            System.out.println("combi: "+ this.bestCombination.getVal());
         } catch(Exception e){
             throw new PokerException("Erreur lors de la vérification des combinaisons.");
         }
@@ -245,7 +252,8 @@ public class Hand {
 
         int sum = min.getIntVal()+4;
 
-        if(!this.pair() && !this.brelan() && !this.carre() && ( sum == max.getIntVal())) {
+       /* if(!this.pair() && !this.brelan() && !this.carre() && ( sum == max.getIntVal())) {*/
+        if(!this.occurenceCount.containsValue(2) && !this.occurenceCount.containsValue(3) && !this.occurenceCount.containsValue(4)&&( sum == max.getIntVal())) {
             this.bestCombination = Combination.Suite;
             this.setCombiCard(this.getCardFromHand(max));
             return true;}
@@ -270,7 +278,7 @@ public class Hand {
     }
 
     public boolean quinteFlush(){
-        if( this.couleur() && this.suite()) {
+        if( this.suite() && this.couleur()) {
             this.bestCombination = Combination.QuinteFlush;
             return true;
         }

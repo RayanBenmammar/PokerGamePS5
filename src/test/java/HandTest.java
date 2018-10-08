@@ -39,10 +39,10 @@ class HandTest {
 
     @BeforeEach
     public void setup(){
-        list1 = new ArrayList<>(Arrays.asList(new Card("8Tr"),new Card("8Pi"),new Card("8Ca"),new Card("8Co")));
-        list2 = new ArrayList<>(Arrays.asList(new Card("4Tr"),new Card("4Pi"),new Card("4Ca"),new Card("7Co")));
-        list3 = new ArrayList<>(Arrays.asList(new Card("5Tr"),new Card("9Pi"),new Card("2Ca"),new Card("5Co")));
-        list4 = new ArrayList<>(Arrays.asList(new Card("RTr"),new Card("DPi"),new Card("DCa"),new Card("RCo")));
+        list1 = new ArrayList<>(Arrays.asList(new Card("8Tr"),new Card("8Pi"),new Card("8Ca"),new Card("8Co"), new Card("2Ca")));
+        list2 = new ArrayList<>(Arrays.asList(new Card("4Tr"),new Card("4Pi"),new Card("4Ca"),new Card("7Co"), new Card("2Ca")));
+        list3 = new ArrayList<>(Arrays.asList(new Card("5Tr"),new Card("9Pi"),new Card("2Ca"),new Card("5Co"), new Card("VCa")));
+        list4 = new ArrayList<>(Arrays.asList(new Card("RTr"),new Card("DPi"),new Card("DCa"),new Card("RCo"), new Card("2Ca")));
         list5= new ArrayList<>(Arrays.asList(new Card("APi"),new Card("ATr"),new Card("ACa"),new Card("2Tr"), new Card("2Ca")));
         list6= new ArrayList<>(Arrays.asList(new Card("6Pi"),new Card("5Tr"),new Card("4Ca"),new Card("3Tr"),new Card("2Co")));
         list7= new ArrayList<>(Arrays.asList(new Card("APi"),new Card("3Pi"),new Card("7Pi"),new Card("RPi"), new Card("DPi")));
