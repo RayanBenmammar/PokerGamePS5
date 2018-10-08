@@ -72,6 +72,7 @@ class HandTest {
 
     @Test
     public void testOcc(){
+
         assertFalse(hand1.pair());
         assertFalse(hand1.brelan());
         assertTrue(hand1.carre());
@@ -126,6 +127,7 @@ class HandTest {
 
     @Test
     public void testHandValid(){
+
         assertTrue(hand1.areCardsValid());
         assertTrue(hand2.areCardsValid());
         assertTrue(hand8.areCardsValid());
@@ -142,4 +144,6 @@ class HandTest {
         assertTrue(hand1.hasSameCombination(hand5));
 
     }
+
+
 }
