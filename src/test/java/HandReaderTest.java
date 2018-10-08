@@ -1,17 +1,13 @@
-
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 
-
-class ArbitratorTest {
+class HandReaderTest {
 
     List<Card> list1;
     List<Card> list2;
@@ -55,6 +51,17 @@ class ArbitratorTest {
         hand8 = new Hand(list8);
         hand9= new Hand(list9);
 
+    }
+
+    @Test
+    public void testCheckWinner() throws PokerException{
+        HandReader reader = new HandReader();
+        assertEquals(1, reader.checkWinner(hand1, hand2));
+        assertEquals(1, reader.checkWinner(hand3, hand4));
+        assertEquals(1, reader.checkWinner(hand1, hand3));
+        assertEquals(1, reader.checkWinner(hand2, hand6));
+        assertEquals(1, reader.checkWinner(hand3, hand5));
+        assertEquals(1, reader.checkWinner(hand5, hand6));
     }
 
 }
