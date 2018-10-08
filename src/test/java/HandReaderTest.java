@@ -34,10 +34,10 @@ class HandReaderTest {
         list2 = new ArrayList<>(Arrays.asList(new Card("4Tr"),new Card("4Pi"),new Card("2Ca"),new Card("7Co"),new Card("RCo")));
         list3 = new ArrayList<>(Arrays.asList(new Card("5Tr"),new Card("5Pi"),new Card("2Ca"),new Card("2Co"),new Card("9Co")));
         list4 = new ArrayList<>(Arrays.asList(new Card("RTr"),new Card("RPi"),new Card("RCa"),new Card("2Co"),new Card("9Co")));
-        list5= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Tr"),new Card("7Ca"),new Card("6Tr"), new Card("2Ca")));
+        list5= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Tr"),new Card("7Ca"),new Card("6Tr"), new Card("5Ca")));
         list6= new ArrayList<>(Arrays.asList(new Card("6Pi"),new Card("5Pi"),new Card("9Pi"),new Card("2Pi"),new Card("RPi")));
         list7= new ArrayList<>(Arrays.asList(new Card("APi"),new Card("ATr"),new Card("ACo"),new Card("2Pi"), new Card("2Tr")));
-        list8= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Pi"),new Card("7Pi"),new Card("6Pi"),new Card("5Pi")));
+        list8= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("9Co"),new Card("9Ca"),new Card("9Tr"),new Card("5Pi")));
         list9= new ArrayList<>(Arrays.asList(new Card("9Pi"),new Card("8Pi"),new Card("7Pi"),new Card("6Pi"),new Card("5Pi")));
 
 
@@ -57,11 +57,55 @@ class HandReaderTest {
     public void testCheckWinner() throws PokerException{
         HandReader reader = new HandReader();
         assertEquals(1, reader.checkWinner(hand1, hand2));
-        assertEquals(1, reader.checkWinner(hand3, hand4));
         assertEquals(1, reader.checkWinner(hand1, hand3));
+        assertEquals(1, reader.checkWinner(hand1, hand4));
+        assertEquals(1, reader.checkWinner(hand1, hand5));
+        assertEquals(1, reader.checkWinner(hand1, hand6));
+        assertEquals(1, reader.checkWinner(hand1, hand7));
+        assertEquals(1, reader.checkWinner(hand1, hand8));
+        assertEquals(1, reader.checkWinner(hand1, hand9));
+
+        assertEquals(1, reader.checkWinner(hand2, hand3));
+        assertEquals(1, reader.checkWinner(hand2, hand4));
+        assertEquals(1, reader.checkWinner(hand2, hand5));
         assertEquals(1, reader.checkWinner(hand2, hand6));
-        assertEquals(1, reader.checkWinner(hand5, hand3));
+        assertEquals(1, reader.checkWinner(hand2, hand7));
+        assertEquals(1, reader.checkWinner(hand2, hand8));
+        assertEquals(1, reader.checkWinner(hand2, hand9));
+
+        assertEquals(1, reader.checkWinner(hand3, hand4));
+        assertEquals(1, reader.checkWinner(hand3, hand5));
+        assertEquals(1, reader.checkWinner(hand3, hand6));
+        assertEquals(1, reader.checkWinner(hand3, hand7));
+        assertEquals(1, reader.checkWinner(hand3, hand8));
+        assertEquals(1, reader.checkWinner(hand3, hand9));
+
+        assertEquals(1, reader.checkWinner(hand4, hand5));
+        assertEquals(1, reader.checkWinner(hand4, hand6));
+        assertEquals(1, reader.checkWinner(hand4, hand7));
+        assertEquals(1, reader.checkWinner(hand4, hand8));
+        assertEquals(1, reader.checkWinner(hand4, hand9));
+
         assertEquals(1, reader.checkWinner(hand5, hand6));
+        assertEquals(1, reader.checkWinner(hand5, hand7));
+        assertEquals(1, reader.checkWinner(hand5, hand8));
+        assertEquals(1, reader.checkWinner(hand5, hand9));
+
+        assertEquals(1, reader.checkWinner(hand6, hand7));
+        assertEquals(1, reader.checkWinner(hand6, hand8));
+        assertEquals(1, reader.checkWinner(hand6, hand9));
+
+        assertEquals(1, reader.checkWinner(hand7, hand8));
+        assertEquals(1, reader.checkWinner(hand7, hand9));
+
+        assertEquals(1, reader.checkWinner(hand8, hand9));
+
+
+        assertEquals(0, reader.checkWinner(hand2, hand1));
+        assertEquals(0, reader.checkWinner(hand5, hand3));
+        assertEquals(0, reader.checkWinner(hand8, hand4));
+        assertEquals(0, reader.checkWinner(hand9, hand8));
+        assertEquals(0, reader.checkWinner(hand7, hand2));
     }
 
 }
