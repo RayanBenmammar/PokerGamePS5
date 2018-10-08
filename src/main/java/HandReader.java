@@ -41,10 +41,12 @@ public class HandReader {
     public int checkWinner(Hand hand1, Hand hand2) throws PokerException{
         hand1.checkCombinaison();
         hand2.checkCombinaison();
-        if (hand1.isWeakerThan(hand2)) {
+        if (hand1.compareTo(hand2) == -1) {
             return 1;
-        } else {
+        } else if(hand2.compareTo(hand1) == -1) {
             return 0;
+        } else {
+            return -1;
         }
     }
 }

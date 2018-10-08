@@ -5,9 +5,10 @@ import java.util.Map;
 
 public class Hand {
 
-    public List<Card> hand;
-    public Combination bestCombination;
-    public Card bestCombinationCard;
+    List<Card> hand;
+    Combination bestCombination;
+    Card bestCombinationCard;
+    Card doublePaireWeakCard;
     private HashMap<Card.CardValue, Integer> occurenceCount ;
 
     protected enum Combination{
@@ -53,12 +54,23 @@ public class Hand {
         this.bestCombinationCard = new Card();
         this.hand = new_hand;
         this.Occurences();
-
     }
 
-    public Card getCombiCard() { return this.bestCombinationCard; }
+    Hand(Hand new_hand){
+        this.bestCombination = new_hand.bestCombination;
+        this.bestCombinationCard = new_hand.bestCombinationCard;
+        this.doublePaireWeakCard = new_hand.doublePaireWeakCard;
+        this.hand = new_hand.hand;
+        this.occurenceCount = new_hand.occurenceCount;
+    }
 
-    public void setCombiCard(Card card_) { this.bestCombinationCard = card_; }
+    Card getCombiCard() { return this.bestCombinationCard; }
+
+    private void setCombiCard(Card card_) { this.bestCombinationCard = card_; }
+
+    private Card getDoublePaireWeakCard() { return this.doublePaireWeakCard;}
+
+    private void setDoublePaireWeakCard(Card card_){ this.doublePaireWeakCard = card_;}
 
     private void Occurences(){
         occurenceCount =  new HashMap<>();
@@ -91,9 +103,9 @@ public class Hand {
             this.full();
             this.carre();
             this.quinteFlush();
-            if(this.bestCombination.equals(Combination.None)){
+            /*if(this.bestCombination.equals(Combination.None)){
                 this.high();
-            }
+            }*/
             System.out.println("combi: " +this.bestCombination.getVal());
         } catch(Exception e){
             throw new PokerException("Erreur lors de la vérification des combinaisons.");
@@ -104,13 +116,13 @@ public class Hand {
         return this.bestCombination;
     }
 
-    public boolean isWeakerThan(Hand hand2) throws PokerException{
+    public int compareTo(Hand hand2) throws PokerException{
         try {
             // On vérifie si une main a une combinaison plus forte que l'autre
             if(this.bestCombination.isWeakerThan(hand2.bestCombination)){
-                return true;
+                return 1;
             } else if (hand2.bestCombination.isWeakerThan(this.bestCombination)){
-                return false;
+                return -1;
             }
         } catch(Exception e){
             throw new PokerException("Erreur lors de la comparaison des niveaux de combinaisons");
@@ -119,9 +131,9 @@ public class Hand {
         try{
             // Les deux mains ont la même combinaison, donc on vérifie la valeur de carte de leur combinaisons
             if(this.getCombiCard().isWeakerThan(hand2.getCombiCard())){
-                return true;
+                return 1;
             } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
-                return false;
+                return -1;
             }
         } catch(Exception e){
             throw new PokerException("Erreur lors du calcul de hauteur entre les combinaisons.");
@@ -129,24 +141,42 @@ public class Hand {
 
         try{
             // Il y a les deux même combinaisons dans les deux mains, il faut donc faire la hauteur avec les cartes restantes
+            return hand2.highOnRemainingCards(this);
         } catch(Exception e){
             throw new PokerException("Erreur lors du calcul de hauteur entre les cartes qui ne sont pas dans une combinaison.");
         }
-
-
-
-
-        return this.getCombiCard().isWeakerThan(hand2.getCombiCard());
     }
 
-    public void high(){
-        this.setCombiCard(hand.get(0));
-        for( Card c : this.hand){
-            if(!c.isWeakerThan(this.bestCombinationCard)){
-                this.bestCombinationCard = c;
+    public Card getHighestCard(List<Card> list){
+        Card highestCard = new Card();
+        for(Card aCard : list){
+            if(highestCard.isWeakerThan(aCard)){
+                highestCard = aCard;
             }
         }
+        return highestCard;
+    }
 
+    public int highOnRemainingCards(Hand hand1){
+        Hand tmpThisHand = new Hand(this);
+        Hand tmpHand1 = new Hand(hand1);
+        while(!tmpThisHand.hand.isEmpty()){
+            Card highestCardThisHand = getHighestCard(tmpThisHand.hand);
+            Card highestCardHand1 = getHighestCard(tmpHand1.hand);
+            if(highestCardHand1.isWeakerThan(highestCardThisHand)){
+                this.bestCombination = Combination.None;
+                this.bestCombinationCard = highestCardThisHand;
+                return -1;
+            } else if (highestCardThisHand.isWeakerThan(highestCardHand1)){
+                hand1.bestCombination = Combination.None;
+                hand1.bestCombinationCard = highestCardHand1;
+                return 1;
+            } else {
+                tmpHand1.hand.remove(highestCardHand1);
+                tmpThisHand.hand.remove(highestCardThisHand);
+            }
+        }
+        return 0;
     }
 
     public Card getCardFromHand(Card.CardValue index){
@@ -202,18 +232,21 @@ public class Hand {
     public boolean doublePaire(){
          int cnt = 0;
          Card.CardValue card1 = Card.CardValue.None;
+         Card.CardValue card2 = Card.CardValue.None;
         for( Map.Entry entry :  this.occurenceCount.entrySet()){
             if(entry.getValue() == Integer.valueOf(2) ) {
                 cnt++;
                 if(((Card.CardValue)entry.getKey()).compareTo(card1) >0 ){
                     card1 = (Card.CardValue) entry.getKey();
                 }
-
+                card2 = (Card.CardValue) entry.getKey();
             }
 
             if(cnt == 2){
                 this.bestCombination = Combination.DoublePaire;
                 this.setCombiCard(this.getCardFromHand(card1));
+                this.setDoublePaireWeakCard(this.getCardFromHand(card2));
+                System.out.println("weak card double paire : " + this.getDoublePaireWeakCard().getValue());
                 return true;}
 
         }
@@ -221,7 +254,7 @@ public class Hand {
     }
 
     public boolean full(){
-            if( occurenceCount.containsValue(Integer.valueOf(3)) && occurenceCount.containsValue(Integer.valueOf(2)) ) {
+            if( occurenceCount.containsValue(3) && occurenceCount.containsValue(2) ) {
                 this.bestCombination = Combination.Full;
                 for( Map.Entry entry :  this.occurenceCount.entrySet()){
                     if(entry.getValue() == Integer.valueOf(3) ) {

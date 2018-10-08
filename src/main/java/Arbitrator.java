@@ -1,7 +1,7 @@
-public class Arbitrator {
+class Arbitrator {
     private Hand[] hands;
     private HandReader reader;
-    public int cardNumber;
+    int cardNumber;
 
     Arbitrator(int cardNumber_){
         reader = new HandReader();
@@ -9,7 +9,7 @@ public class Arbitrator {
         cardNumber = cardNumber_;
     }
 
-    public void askHand(int index) throws PokerException {
+    void askHand(int index) throws PokerException {
         if(index < hands.length && index >= 0) {
             hands[index] = reader.readCardsFromInput(cardNumber, index);
         } else {
@@ -23,9 +23,13 @@ public class Arbitrator {
         }
     }
 
-    public void askWinner() throws PokerException{
+    void askWinner() throws PokerException{
         int indexWinningHand = reader.checkWinner(hands[0], hands[1]);
-        System.out.println("La main " + (indexWinningHand+1) + " gagne avec : " + hands[indexWinningHand].getBestCombi().getVal() + " de " + hands[indexWinningHand].getCombiCard().getValue());
+        if(indexWinningHand != -1){
+            System.out.println("La main " + (indexWinningHand+1) + " gagne avec : " + hands[indexWinningHand].getBestCombi().getVal() + " de " + hands[indexWinningHand].getCombiCard().getValue());
+        } else {
+            System.out.println("Egalité !");
+        }
     }
 
 }
