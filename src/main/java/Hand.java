@@ -187,8 +187,7 @@ public class Hand {
         return card;
     }
 
-    public boolean hasSameCombination(Hand hand2){
-        return this.getBestCombi().equals(hand2.getBestCombi());
+    public boolean hasSameCombination(Hand hand2){ return this.getBestCombi().equals(hand2.getBestCombi());
     }
 
    public boolean pair(){
