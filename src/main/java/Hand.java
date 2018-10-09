@@ -99,6 +99,8 @@ public class Hand {
                 this.high();
             }*/
 
+
+
         } catch(Exception e){
             throw new PokerException("Erreur lors de la vérification des combinaisons.");
         }

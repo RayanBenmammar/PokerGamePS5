@@ -8,3 +8,12 @@
 	                            6Ca 9Pi RCo 6Tr     9Ca
 				                 RCa   3Pi RPi 2Tr RTr
 
+- couleur vs quinteflush :  3Tr 5Tr 10Tr RTr ATr
+                            APi 10Pi DPi RPi VPi
+
+- suite (avec As en petit ) vs carré de valet : 2Pi 4Tr ACa 5Co 3Pi
+                                                VPi 2Ca VTr VCo VCa
+
+- suite (avec As en petit ) vs brelan de valet : 2Pi 4Tr ACa 5Co 3Pi
+                                                VPi 2Ca VTr 10Co VCa
+
