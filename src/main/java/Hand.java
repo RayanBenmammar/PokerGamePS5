@@ -72,6 +72,7 @@ public class Hand {
 
     private void setDoublePaireWeakCard(Card card_){ this.doublePaireWeakCard = card_;}
 
+
     private void Occurences(){
         occurenceCount =  new HashMap<>();
         for( Card c : this.hand){
@@ -106,7 +107,7 @@ public class Hand {
             /*if(this.bestCombination.equals(Combination.None)){
                 this.high();
             }*/
-            System.out.println("combi: " +this.bestCombination.getVal());
+
         } catch(Exception e){
             throw new PokerException("Erreur lors de la vérification des combinaisons.");
         }
@@ -245,7 +246,7 @@ public class Hand {
                 this.bestCombination = Combination.DoublePaire;
                 this.setCombiCard(this.getCardFromHand(card1));
                 this.setDoublePaireWeakCard(this.getCardFromHand(card2));
-                System.out.println("weak card double paire : " + this.getDoublePaireWeakCard().getValue());
+               // System.out.println("weak card double paire : " + this.getDoublePaireWeakCard().getValue());
                 return true;}
 
         }

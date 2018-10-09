@@ -1,0 +1,10 @@
+-hauteur de 6 vs paire de 2 :	4Tr 7Tr 6Ca ACo 2Pi
+				                2Ca 9Pi RCo 2Tr 10Pi
+
+-paire de 6 vs brelan de roi :	6Ca 9Pi RCo 6Tr 10Pi
+				                RCa 3Pi RPi 2Tr RTr
+
+-doublepaire de 9 vs brelan de roi (avec des tabulations et espaces en plus pour montrer que cela marche qd même ):
+	                            6Ca 9Pi RCo 6Tr     9Ca
+				                 RCa   3Pi RPi 2Tr RTr
+

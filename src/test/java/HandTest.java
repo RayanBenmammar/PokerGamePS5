@@ -136,13 +136,21 @@ class HandTest {
 
 
     @Test
-    public void testSameCombi(){
+    public void testSameCombi()throws PokerException{
 
-        assertTrue(hand1.hasSameCombination(hand10));
-        assertTrue(hand11.hasSameCombination(hand8));
+        hand1.checkCombinaison();
+        hand10.checkCombinaison();
+        hand11.checkCombinaison();
+        hand8.checkCombinaison();
+        hand12.checkCombinaison();
+        hand5.checkCombinaison();
+        hand4.checkCombinaison();
+
+        assertFalse(hand1.hasSameCombination(hand10));
+        assertFalse(hand11.hasSameCombination(hand8));
         assertTrue(hand12.hasSameCombination(hand5));
-        assertTrue(hand4.hasSameCombination(hand11));
-        assertTrue(hand1.hasSameCombination(hand5));
+        assertFalse(hand4.hasSameCombination(hand11));
+        assertFalse(hand1.hasSameCombination(hand5));
 
     }
 
