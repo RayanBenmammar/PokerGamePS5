@@ -120,9 +120,9 @@ public class Hand {
         try {
             // On vérifie si une main a une combinaison plus forte que l'autre
             if(this.bestCombination.isWeakerThan(hand2.bestCombination)){
-                return 1;
-            } else if (hand2.bestCombination.isWeakerThan(this.bestCombination)){
                 return -1;
+            } else if (hand2.bestCombination.isWeakerThan(this.bestCombination)){
+                return 1;
             }
         } catch(Exception e){
             throw new PokerException("Erreur lors de la comparaison des niveaux de combinaisons");
@@ -131,9 +131,9 @@ public class Hand {
         try{
             // Les deux mains ont la même combinaison, donc on vérifie la valeur de carte de leur combinaisons
             if(this.getCombiCard().isWeakerThan(hand2.getCombiCard())){
-                return 1;
-            } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
                 return -1;
+            } else if(hand2.getCombiCard().isWeakerThan(this.getCombiCard())){
+                return 1;
             }
         } catch(Exception e){
             throw new PokerException("Erreur lors du calcul de hauteur entre les combinaisons.");

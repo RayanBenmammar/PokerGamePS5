@@ -43,6 +43,7 @@ public class HandReader {
         hand1.checkCombinaison();
         hand2.checkCombinaison();
         int result = hand1.compareTo(hand2);
+        System.out.println("result : " + result);
         if (result > 0) {
             return 0;
         } else if(result < 0) {
