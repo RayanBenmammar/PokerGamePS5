@@ -43,9 +43,9 @@ public class HandReader {
         hand2.checkCombinaison();
         int result = hand1.compareTo(hand2);
         if (result > 0) {
-            return 1;
-        } else if(result < 0) {
             return 0;
+        } else if(result < 0) {
+            return 1;
         } else {
             return -1;
         }
