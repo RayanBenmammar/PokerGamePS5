@@ -28,15 +28,6 @@ public class Hand {
         public boolean isWeakerThan(Combination combin){
             return this.compareTo(combin) < 0;
         }
-
-        public static Combination fromString(String s){
-            for(Combination val_card : Combination.values()){
-                if(s.equals(val_card.getVal())){
-                    return val_card;
-                }
-            }
-            return Combination.None;
-        }
     }
 
     Hand(){
