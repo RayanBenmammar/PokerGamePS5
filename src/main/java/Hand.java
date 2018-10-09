@@ -312,7 +312,7 @@ public class Hand {
     }
 
     public boolean quinteFlush(){
-        if( this.suite() && this.couleur()) {
+        if( this.couleur() && this.suite()) {
             this.bestCombination = Combination.QuinteFlush;
             return true;
         }
