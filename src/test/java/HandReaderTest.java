@@ -56,56 +56,56 @@ class HandReaderTest {
     @Test
     public void testCheckWinner() throws PokerException{
         HandReader reader = new HandReader();
-        assertEquals(0, reader.checkWinner(hand1, hand2));
-        assertEquals(0, reader.checkWinner(hand1, hand3));
-        assertEquals(0, reader.checkWinner(hand1, hand4));
-        assertEquals(0, reader.checkWinner(hand1, hand5));
-        assertEquals(0, reader.checkWinner(hand1, hand6));
-        assertEquals(0, reader.checkWinner(hand1, hand7));
-        assertEquals(0, reader.checkWinner(hand1, hand8));
-        assertEquals(0, reader.checkWinner(hand1, hand9));
+        assertEquals(1, reader.checkWinner(hand1, hand2));
+        assertEquals(1, reader.checkWinner(hand1, hand3));
+        assertEquals(1, reader.checkWinner(hand1, hand4));
+        assertEquals(1, reader.checkWinner(hand1, hand5));
+        assertEquals(1, reader.checkWinner(hand1, hand6));
+        assertEquals(1, reader.checkWinner(hand1, hand7));
+        assertEquals(1, reader.checkWinner(hand1, hand8));
+        assertEquals(1, reader.checkWinner(hand1, hand9));
 
-        assertEquals(0, reader.checkWinner(hand2, hand3));
-        assertEquals(0, reader.checkWinner(hand2, hand4));
-        assertEquals(0, reader.checkWinner(hand2, hand5));
-        assertEquals(0, reader.checkWinner(hand2, hand6));
-        assertEquals(0, reader.checkWinner(hand2, hand7));
-        assertEquals(0, reader.checkWinner(hand2, hand8));
-        assertEquals(0, reader.checkWinner(hand2, hand9));
+        assertEquals(1, reader.checkWinner(hand2, hand3));
+        assertEquals(1, reader.checkWinner(hand2, hand4));
+        assertEquals(1, reader.checkWinner(hand2, hand5));
+        assertEquals(1, reader.checkWinner(hand2, hand6));
+        assertEquals(1, reader.checkWinner(hand2, hand7));
+        assertEquals(1, reader.checkWinner(hand2, hand8));
+        assertEquals(1, reader.checkWinner(hand2, hand9));
 
-        assertEquals(0, reader.checkWinner(hand3, hand4));
-        assertEquals(0, reader.checkWinner(hand3, hand5));
-        assertEquals(0, reader.checkWinner(hand3, hand6));
-        assertEquals(0, reader.checkWinner(hand3, hand7));
-        assertEquals(0, reader.checkWinner(hand3, hand8));
-        assertEquals(0, reader.checkWinner(hand3, hand9));
+        assertEquals(1, reader.checkWinner(hand3, hand4));
+        assertEquals(1, reader.checkWinner(hand3, hand5));
+        assertEquals(1, reader.checkWinner(hand3, hand6));
+        assertEquals(1, reader.checkWinner(hand3, hand7));
+        assertEquals(1, reader.checkWinner(hand3, hand8));
+        assertEquals(1, reader.checkWinner(hand3, hand9));
 
-        assertEquals(0, reader.checkWinner(hand4, hand5));
-        assertEquals(0, reader.checkWinner(hand4, hand6));
-        assertEquals(0, reader.checkWinner(hand4, hand7));
-        assertEquals(0, reader.checkWinner(hand4, hand8));
-        assertEquals(0, reader.checkWinner(hand4, hand9));
+        assertEquals(1, reader.checkWinner(hand4, hand5));
+        assertEquals(1, reader.checkWinner(hand4, hand6));
+        assertEquals(1, reader.checkWinner(hand4, hand7));
+        assertEquals(1, reader.checkWinner(hand4, hand8));
+        assertEquals(1, reader.checkWinner(hand4, hand9));
 
-        assertEquals(0, reader.checkWinner(hand5, hand6));
-        assertEquals(0, reader.checkWinner(hand5, hand7));
-        assertEquals(0, reader.checkWinner(hand5, hand8));
-        assertEquals(0, reader.checkWinner(hand5, hand9));
+        assertEquals(1, reader.checkWinner(hand5, hand6));
+        assertEquals(1, reader.checkWinner(hand5, hand7));
+        assertEquals(1, reader.checkWinner(hand5, hand8));
+        assertEquals(1, reader.checkWinner(hand5, hand9));
 
-        assertEquals(0, reader.checkWinner(hand6, hand7));
-        assertEquals(0, reader.checkWinner(hand6, hand8));
-        assertEquals(0, reader.checkWinner(hand6, hand9));
+        assertEquals(1, reader.checkWinner(hand6, hand7));
+        assertEquals(1, reader.checkWinner(hand6, hand8));
+        assertEquals(1, reader.checkWinner(hand6, hand9));
 
-        assertEquals(0, reader.checkWinner(hand7, hand8));
-        assertEquals(0, reader.checkWinner(hand7, hand9));
+        assertEquals(1, reader.checkWinner(hand7, hand8));
+        assertEquals(1, reader.checkWinner(hand7, hand9));
 
-        assertEquals(0, reader.checkWinner(hand8, hand9));
+        assertEquals(1, reader.checkWinner(hand8, hand9));
 
 
-        assertEquals(1, reader.checkWinner(hand2, hand1));
-        assertEquals(1, reader.checkWinner(hand5, hand3));
-        assertEquals(1, reader.checkWinner(hand8, hand4));
-        assertEquals(1, reader.checkWinner(hand9, hand8));
-        assertEquals(1, reader.checkWinner(hand7, hand2));
+        assertEquals(0, reader.checkWinner(hand2, hand1));
+        assertEquals(0, reader.checkWinner(hand5, hand3));
+        assertEquals(0, reader.checkWinner(hand8, hand4));
+        assertEquals(0, reader.checkWinner(hand9, hand8));
+        assertEquals(0, reader.checkWinner(hand7, hand2));
     }
 
 }
