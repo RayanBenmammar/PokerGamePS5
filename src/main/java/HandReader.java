@@ -38,6 +38,7 @@ public class HandReader {
         return this.valid;
     }
 
+    // Renvoi l'index de la main qui gagne
     public int checkWinner(Hand hand1, Hand hand2) throws PokerException{
         hand1.checkCombinaison();
         hand2.checkCombinaison();
