@@ -11,9 +11,23 @@
 - couleur vs quinteflush :  3Tr 5Tr 10Tr RTr ATr
                             APi 10Pi DPi RPi VPi
 
-- suite (avec As en petit ) vs carré de valet : 2Pi 4Tr ACa 5Co 3Pi
+- suite (avec As en petit ) vs carré de valet : 2Pi 4Tr ACa 5Co 3Pi 
                                                 VPi 2Ca VTr VCo VCa
 
 - suite (avec As en petit ) vs brelan de valet : 2Pi 4Tr ACa 5Co 3Pi
                                                 VPi 2Ca VTr 10Co VCa
 
+
+- égalité : 6Pi 6Tr RCa VCa 2Co
+            6Co 6Ca RTr VPi 2Tr
+
+
+-2 suites : APi 2Tr 3Ca 4Co 5Tr
+            10Pi VTr DCa RCo ATr
+
+- Meme carte --> erreur : 4Tr 7Tr 6Ca ACo 2Pi
+                          3Pi RPi 2Tr RTr 2Pi
+
+
+-égalité puis gagnant avec hauteur: 6Ca 9Pi RCo 6Tr 10Pi
+                                    6Co 6Pi 2Tr 7Pi 5Co
