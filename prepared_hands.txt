@@ -26,15 +26,17 @@
 
 
 
-
-
-
-
-
-
 - couleur vs quinteflush :  3Tr 5Tr 10Tr RTr ATr
                             APi 10Pi DPi RPi VPi
 
+
+
+
+
+
+
+-paire de 6 vs brelan de roi :	6Ca 9Pi RCo 6Tr 10Pi
+				                RCa 3Pi RPi 2Tr RTr
 
 -égalité puis gagnant avec hauteur: 6Ca 9Pi RCo 6Tr 10Pi
                                     6Co 6Pi 2Tr 7Pi 5Co
